@@ -14,7 +14,7 @@ const createComment = function(id){
 const createPhoto = function(id){
   let comments = [];
   for (let i = 0; i < Math.floor(Math.random() * 30); i++){
-    comments[i] = createComment(toString(i) + toString(id));
+    comments[i] = createComment(i+id);
   }
   return {
     id: id,
