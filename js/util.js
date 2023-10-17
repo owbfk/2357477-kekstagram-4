@@ -18,7 +18,7 @@ const createPhoto = function(id){
   }
   return {
     id: id,
-    url: `photos/${toString(id)}.jpg`,
+    url: `photos/${id}.jpg`,
     description: descriptions[Math.floor(Math.random() * descriptions.length)],
     likes: Math.floor(Math.random() * 176) + 15,
     comments: comments
