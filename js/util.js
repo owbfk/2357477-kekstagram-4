@@ -5,7 +5,7 @@ import {descriptions} from '/js/data.js';
 const createComment = function(id){
   return {
     id: id,
-    avatar: `img/avatar--${Math.floor(Math.random() * 5)+1}.svg`,
+    avatar: `img/avatar-${Math.floor(Math.random() * 5)+1}.svg`,
     message: messages[Math.floor(Math.random() * messages.length)],
     name: names[Math.floor(Math.random() * names.length)]
   };
