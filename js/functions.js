@@ -10,3 +10,4 @@ const isFitMeeting = function(start, end, meet, duration){
   }
   return true;
 };
+isFitMeeting();
