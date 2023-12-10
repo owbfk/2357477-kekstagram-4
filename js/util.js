@@ -1,6 +1,6 @@
-import {messages} from '/js/data.js';
-import {names} from '/js/data.js';
-import {descriptions} from '/js/data.js';
+import { messages } from '/js/data.js';
+import { names } from '/js/data.js';
+import { descriptions } from '/js/data.js';
 
 const createComment = function(id){
   return {
@@ -12,20 +12,18 @@ const createComment = function(id){
 };
 
 const createPhoto = function(id){
-  let comments = [];
+  const comments = [];
   for (let i = 0; i < Math.floor(Math.random() * 30); i++){
-
     comments[i] = createComment(Math.floor(Math.random() * 9999999999));
   }
   return {
     id: id,
     url: `photos/${id+1}.jpg`,
-
     description: descriptions[Math.floor(Math.random() * descriptions.length)],
     likes: Math.floor(Math.random() * 176) + 15,
     comments: comments
   };
 };
 
-export {createPhoto};
-export{createComment};
+export { createPhoto };
+export{ createComment };
