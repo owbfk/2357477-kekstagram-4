@@ -1,11 +1,9 @@
-/* eslint-disable no-console */
 const newComm = document.querySelector('.big-picture').querySelector('.social__comments').children[0].cloneNode(true);
 document.querySelector('.big-picture').querySelector('.social__comments').removeChild(document.querySelector('.big-picture').querySelector('.social__comments').children[1]);
 document.querySelector('.big-picture').querySelector('.social__comments').removeChild(document.querySelector('.big-picture').querySelector('.social__comments').children[0]);
 
 function bigPicture(photos) {
   const pictures = document.querySelectorAll('.picture');
-  console.log(pictures);
   for (let i = 0; i<pictures.length; i++){
     pictures[i].addEventListener('click', (evt)=> {
       const big = document.querySelector('.big-picture');
@@ -15,7 +13,7 @@ function bigPicture(photos) {
       big.querySelector('.big-picture__img').children[0].src = photos[i].url;
       big.querySelector('.likes-count').textContent = photos[i].likes;
       big.querySelector('.comments-count').textContent = photos[i].comments.length;
-      console.log(photos[i].comments.length);
+
       while (big.querySelector('.social__comments').childElementCount !== 0){
         big.querySelector('.social__comments').removeChild(big.querySelector('.social__comments').children[0]);
       }
@@ -59,7 +57,7 @@ function drawPictures (photos) {
     newPicture.children[0].children[1].children[1].textContent = photos[i].likes;
     newPicture.children[0].children[1].children[0].textContent = photos[i].comments.length;
     picturesContainer.appendChild(newPicture);
-    //bigPicture(newPicture);
+
   }
   bigPicture(photos);
 }

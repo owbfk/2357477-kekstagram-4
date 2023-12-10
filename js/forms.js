@@ -1,13 +1,12 @@
-import { isEscapeKey } from './util.js';
 import { pristine } from './validation.js';
-import './hashtag-validator.js';
-import './comment-validator.js';
+import '/js/hastagValidation.js';
+import '/js/commentValidation.js';
 
 const imageUploadForm = document.querySelector('#upload-select-image');
 const imageInputField = document.querySelector('.img-upload__input');
 const imageEdit = document.querySelector('.img-upload__overlay');
 const editorCloseButton = imageEdit.querySelector('.img-upload__cancel');
-
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
 const onEditorEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -28,6 +27,8 @@ const showEditor = () => {
   editorCloseButton.addEventListener('click', onEditorCloseClick);
   document.addEventListener('keydown', onEditorEscKeydown);
 };
+
+export { showEditor };
 
 function closeEditor () {
   document.body.classList.remove('modal-open');
