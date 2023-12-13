@@ -1,6 +1,8 @@
+/* eslint-disable indent */
 import { messages } from '/js/data.js';
 import { names } from '/js/data.js';
-import { descriptions } from '/js/data.js';
+
+import { drawPictures } from '/js/draw.js';
 
 const createComment = function(id){
   return {
@@ -11,19 +13,41 @@ const createComment = function(id){
   };
 };
 
-const createPhoto = function(id){
-  const comments = [];
-  for (let i = 0; i < Math.floor(Math.random() * 30); i++){
-    comments[i] = createComment(Math.floor(Math.random() * 9999999999));
-  }
+const createPhoto = function(picture){
   return {
-    id: id,
-    url: `photos/${id+1}.jpg`,
-    description: descriptions[Math.floor(Math.random() * descriptions.length)],
-    likes: Math.floor(Math.random() * 176) + 15,
-    comments: comments
+    id: picture.id,
+    url: picture.url,
+    description: picture.description,
+    likes: picture.likes,
+    comments: picture.comments
   };
 };
 
-export { createPhoto };
-export{ createComment };
+const createArray = (pictures) =>{
+  const photos = [];
+  let i = 0;
+  pictures.forEach((picture) => {
+    photos[i] = (createPhoto(picture));
+    i+=1;
+  });
+  drawPictures(photos);
+};
+
+const createError = (errorText) => {
+  const errorMessage = document.createElement('div');
+  errorMessage.style.backgroundColor = '#8C191B';
+  errorMessage.style.left = 0;
+  errorMessage.style.right = 0;
+  errorMessage.style.top = 0;
+  errorMessage.style.fontSize = `${30}px`;
+  errorMessage.style.textAlign = 'center';
+  errorMessage.style.position = 'absolute';
+  errorMessage.style.padding = `${20}px`;
+  errorMessage.textContent = errorText;
+  document.body.append(errorMessage);
+};
+
+export {createError};
+
+export { createArray };
+export { createComment };

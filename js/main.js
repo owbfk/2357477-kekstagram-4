@@ -1,14 +1,13 @@
 /* eslint-disable no-console */
-import { createPhoto } from '/js/util.js';
+
 import '/js/forms.js';
-import { drawPictures } from '/js/draw.js';
+import { doFetch } from './fetch.js';
+import { createError } from './util.js';
+import { createArray } from './util.js';
 
-
-const photos = [];
-for (let iterrations = 0; iterrations < 25; iterrations++){
-  photos[iterrations] = createPhoto(iterrations);
-}
-
-drawPictures(photos);
+doFetch(
+  createArray,
+  createError,
+  'get');
 
 
