@@ -38,6 +38,8 @@ const hideSlider = () => {
   effectLevelForm.classList.add('hidden');
 };
 
+hideSlider();
+
 const setCurrentEffect = (effect) => {
   currentEffect = effect;
 };
