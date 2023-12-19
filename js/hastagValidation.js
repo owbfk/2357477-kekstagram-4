@@ -1,39 +1,39 @@
 import { pristine, checkValidation } from './validation.js';
 
-const HASHTAG_TEMPLATE = /^#[a-zа-яё0-9]{1,19}$/i;
-const MAX_HASHTAG_LENGTH = 20;
-const MAX_HASHTAG_AMOUNT = 5;
-
 const hashtagInput = document.querySelector('.text__hashtags');
 
-let currentError = '';
+const hashtagTemplate = /^#[a-zа-яё0-9]{1,19}$/i;
+const hashtagMaxLen = 20;
+const hashtagMaxNum = 5;
 
-const validateHashtags = (value) => {
+let errorMessage;
+
+const hashtagValidate = (value) => {
   const hashtags = value
     .split(' ')
     .filter((tag) => tag !== '')
     .map((tag) => tag.toLowerCase());
 
-  if (hashtags.length > MAX_HASHTAG_AMOUNT) {
-    currentError = `Нельзя добавлять больше ${MAX_HASHTAG_AMOUNT} хэштегов`;
+  if (hashtags.length > hashtagMaxNum) {
+    errorMessage = `Превышено количество хэш-тегов, максимально число: ${hashtagMaxNum}`;
     return false;
   }
 
   if (hashtags.some((tag) => hashtags.indexOf(tag) !== hashtags.lastIndexOf(tag))) {
-    currentError = 'Хэштеги не должны повторяться';
+    errorMessage = 'Хэш-теги повторяются';
     return false;
   }
 
   for (const hashtag of hashtags) {
-    if (!HASHTAG_TEMPLATE.test(hashtag)) {
+    if (!hashtagTemplate.test(hashtag)) {
       if (hashtag[0] !== '#') {
-        currentError = 'Хэштег должен начинаться со знака решетки';
+        errorMessage = 'Первым символом должна быть решетка';
       } else if (hashtag.length === 1) {
-        currentError = 'Тело хэштега должно содержать не меньше одного символа';
-      } else if (hashtag.length > MAX_HASHTAG_LENGTH) {
-        currentError = 'Хэштег должен быть не длиннее 20 символов';
+        errorMessage = 'Хештег не может быть пустым';
+      } else if (hashtag.length > hashtagMaxLen) {
+        errorMessage = 'Максимальная длинна хештега: 20 символов';
       } else {
-        currentError = 'Хэштег может состоять только из букв и цифр';
+        errorMessage = 'Введён невалидный хэш-тег';
       }
       return false;
     }
@@ -41,9 +41,9 @@ const validateHashtags = (value) => {
   return true;
 };
 
-const getHashtagErrorMessage = () => currentError;
+const getHashtagErrorMessage = () => errorMessage;
 
-pristine.addValidator(hashtagInput, validateHashtags, getHashtagErrorMessage);
+pristine.addValidator(hashtagInput, hashtagValidate, getHashtagErrorMessage);
 
 const onHashtagInput = () => {
   checkValidation();
