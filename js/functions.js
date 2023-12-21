@@ -1,18 +1,13 @@
-function fitStr(str, limit){
-  if (str.length<=limit){
-    return true;
+const isFitMeeting = function(start, end, meet, duration){
+  const startHM = start.split(':');
+  const endHM = end.split(':');
+  const meetHM = meet.split(':');
+  if (parseInt(startHM[0],10) < parseInt(meetHM[0],10) || parseInt(startHM[0],10) === parseInt(meetHM[0],10) && parseInt(startHM[1],10) < parseInt(meetHM[1],10)){
+    return false;
   }
-  return false;
-}
-
-function palindrome(str){
-  let trs = str;
-  for (let i = 0; i<str.length; i++){
-    trs[str.length-i-1] = str[i];
+  else if ((parseInt(endHM[0],10)-parseInt(meetHM[0],10))*60 + parseInt(endHM[1],10)-parseInt(meetHM[1],10) < duration){
+    return false;
   }
-  if (trs===str){
-    return true;
-  }
-  return false;
-}
-
+  return true;
+};
+isFitMeeting();
