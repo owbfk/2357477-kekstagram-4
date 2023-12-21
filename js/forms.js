@@ -1,3 +1,4 @@
+/* eslint-disable*/
 import { pristine } from './validation.js';
 import '/js/hastagValidation.js';
 import '/js/commentValidation.js';
@@ -148,9 +149,20 @@ function closeEdit (clear = true) {
   document.removeEventListener('keydown', editEscapeKey);
 }
 
+const setMinis = () => {
+  const urlObject =  URL.createObjectURL(userImageInput.files[0]);
+  document.querySelector('.effects__preview--none').style.backgroundImage = "url('" + urlObject + "')";
+  document.querySelector('.effects__preview--chrome').style.backgroundImage = "url('" + urlObject + "')";
+  document.querySelector('.effects__preview--sepia').style.backgroundImage = "url('" + urlObject + "')";
+  document.querySelector('.effects__preview--marvin').style.backgroundImage = "url('" + urlObject + "')";
+  document.querySelector('.effects__preview--phobos').style.backgroundImage = "url('" + urlObject + "')";
+  document.querySelector('.effects__preview--heat').style.backgroundImage = "url('" + urlObject + "')";
+};
+
 const imageUpload = () => {
   pristine.validate();
   uploadPreview(userImagePreview, userImageInput);
+  setMinis();
   showEditor();
 };
 
