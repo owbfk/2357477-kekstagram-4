@@ -75,7 +75,6 @@ function bigPicture(photos) {
           big.classList.add('hidden');
         }
       };
-
       document.addEventListener('keydown', successfullEscapeKey);
     });
   }
