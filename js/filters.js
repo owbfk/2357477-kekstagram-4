@@ -90,7 +90,7 @@ export {
 };
 
 import { deletePictures, createArray } from './util.js';
-import { debounce, randArrayElemInAmount } from './util.js';
+import { debounce, getRandArrayElemInAmount } from './util.js';
 
 const RANDOM_PICTURES_COUNT = 10;
 const ACTIVE_CLASS = 'img-filters__button--active';
@@ -123,7 +123,7 @@ const isButton = (evt) => evt.target.tagName === 'BUTTON';
 
 const setFilter = {
   'filter-default': () => createArray(allPictures),
-  'filter-random': () => createArray(randArrayElemInAmount(allPictures, RANDOM_PICTURES_COUNT)),
+  'filter-random': () => createArray(getRandArrayElemInAmount(allPictures, RANDOM_PICTURES_COUNT)),
   'filter-discussed': () => createArray(allPictures.slice().sort(compareDiscussedPictures))
 };
 

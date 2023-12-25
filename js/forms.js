@@ -1,12 +1,12 @@
 /* eslint-disable*/
 import { pristine } from './validation.js';
-import '/js/hastagValidation.js';
-import '/js/commentValidation.js';
+import '/js/hastag-validation.js';
+import '/js/comment-validation.js';
 
 import { hideSlider, setCurrentEffect, updateImageFilter } from '/js/effects.js';
 import { DEFAULT } from '/js/filters.js';
 import { sendData } from './fetch.js';
-import { uploadPreview } from './uploadPreview.js';
+import { uploadPreview } from './upload-preview.js';
 
 const imageEdit = document.querySelector('.img-upload__overlay');
 const closeEditButton = imageEdit.querySelector('.img-upload__cancel');
@@ -43,7 +43,7 @@ const successfullEscapeKey = (evt) => {
   }
 };
 
-const newScale = () => {
+const setNewScale = () => {
   inputScale.value = `${currentSize}%`;
   userImagePreview.style.transform = `scale(${currentSize / 100})`;
 };
@@ -65,7 +65,7 @@ const showEditor = () => {
 
   currentSize = biggestScale;
   setCurrentEffect(DEFAULT);
-  newScale();
+  setNewScale();
   updateImageFilter();
   hideSlider();
 
@@ -116,14 +116,14 @@ const showUploadErrorMessage = () => {
 const moveAwayClick = () => {
   if (currentSize !== smallestScale) {
     currentSize -= scaleStepValue;
-    newScale();
+    setNewScale();
   }
 };
 
 const moveCloserClick = () => {
   if (currentSize !== biggestScale) {
     currentSize += scaleStepValue;
-    newScale();
+    setNewScale();
   }
 };
 
@@ -134,7 +134,7 @@ const clearForm = () => {
   uploadImage.reset();
   currentSize = biggestScale;
   setCurrentEffect(DEFAULT);
-  newScale();
+  setNewScale();
   updateImageFilter();
   hideSlider();
 };

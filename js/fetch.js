@@ -1,9 +1,9 @@
 const Urls = {
-  'get': 'https://29.javascript.pages.academy/kekstagram/data',
+  'GET': 'https://29.javascript.pages.academy/kekstagram/data',
   'POST': 'https://29.javascript.pages.academy/kekstagram'
 };
 
-const doFetch = () => fetch(Urls.get)
+const doFetch = () => fetch(Urls.GET)
   .then((response) => response.json())
   .then((data) => Promise.resolve(data))
   .catch(() => Promise.reject());

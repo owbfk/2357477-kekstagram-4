@@ -49,16 +49,16 @@ const createError = (errorText) => {
   document.body.append(error);
 };
 
-const randNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+const getRandNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
-const randArrayElem = (list) => list[randNumber(0, list.length - 1)];
+const getRandArrayElem = (list) => list[getRandNumber(0, list.length - 1)];
 
-const randArrayElemInAmount = (list, amount) => {
+const getRandArrayElemInAmount = (list, amount) => {
   const randomPictures = [];
   for (let i = 0; i < amount; i++) {
-    let randomPicture = randArrayElem(list);
+    let randomPicture = getRandArrayElem(list);
     while (randomPictures.includes(randomPicture)) {
-      randomPicture = randArrayElem(list);
+      randomPicture = getRandArrayElem(list);
     }
     randomPictures.push(randomPicture);
   }
@@ -73,6 +73,7 @@ const debounce = (callback, timeoutDelay = 500) => {
   };
 };
 
-export { deletePictures, debounce, randArrayElemInAmount };
+export { deletePictures, debounce };
+export { getRandArrayElemInAmount };
 export { createError };
 export { createArray };

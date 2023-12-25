@@ -3,7 +3,7 @@ const newComm = document.querySelector('.big-picture').querySelector('.social__c
 document.querySelector('.big-picture').querySelector('.social__comments').removeChild(document.querySelector('.big-picture').querySelector('.social__comments').children[1]);
 document.querySelector('.big-picture').querySelector('.social__comments').removeChild(document.querySelector('.big-picture').querySelector('.social__comments').children[0]);
 
-function bigPicture(photos) {
+function setBigPictures(photos) {
   const pictures = document.querySelectorAll('.picture');
   for (let i = 0; i<pictures.length; i++){
     pictures[i].addEventListener('click', (evt)=> {
@@ -94,6 +94,6 @@ function drawPictures (photos) {
     picturesContainer.appendChild(newPicture);
 
   }
-  bigPicture(photos);
+  setBigPictures(photos);
 }
 export {drawPictures};
